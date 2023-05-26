@@ -1,5 +1,5 @@
-import {Table, Column, Model } from 'sequelize-typescript';;
-import {randomUUID} from "crypto";
+import {Table, Column, Model, HasMany} from 'sequelize-typescript';
+import {Quiz} from "../quiz/quiz.entity";
 
 @Table({ tableName: 'User', timestamps: false })
 export class User extends Model<User> {
@@ -11,5 +11,7 @@ export class User extends Model<User> {
 
     @Column
     username: string;
+    @HasMany(() => Quiz)
+    quizzes: Quiz[];
 
 }
