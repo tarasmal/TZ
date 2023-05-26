@@ -16,7 +16,7 @@ services:
       - my-db:/var/lib/mysql
       - ./init-scripts:/docker-entrypoint-initdb.d
   server:
-    build: ../server
+    build: ../app
     ports:
       - "3000:3000"
     environment:
