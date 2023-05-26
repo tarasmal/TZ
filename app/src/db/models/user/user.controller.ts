@@ -14,4 +14,5 @@ export class UserController {
         const { name, username } = body;
         return this.userService.create(name, username);
     }
+
 }

@@ -14,6 +14,10 @@ export class QuizService {
     async findAll (): Promise<Quiz[]> {
         return this.quizRepo.findAll<Quiz>()
     }
+    async findByUserId(userId: string): Promise<Quiz[]> {
+        return this.quizRepo.findAll<Quiz>({ where: { userId } });
+    }
+
     async create(params: CreateQuizT): Promise<Quiz> {
         const newQuiz = new Quiz();
         const {answer, question, userId} = params
