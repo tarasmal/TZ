@@ -1,6 +1,7 @@
-import {Table, Column, Model } from 'sequelize-typescript';
+import {Table, Column, Model } from 'sequelize-typescript';;
+import {randomUUID} from "crypto";
 
-@Table({ tableName: 'User' })
+@Table({ tableName: 'User', timestamps: false })
 export class User extends Model<User> {
     @Column({ primaryKey: true })
     id: string;
@@ -10,4 +11,5 @@ export class User extends Model<User> {
 
     @Column
     username: string;
+
 }

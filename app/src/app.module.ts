@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import {UserModule} from "./db/models/user.module";
+import {UserModule} from "./db/models/user/user.module";
 
 
 @Module({
