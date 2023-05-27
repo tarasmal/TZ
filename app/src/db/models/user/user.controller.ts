@@ -10,9 +10,9 @@ export class UserController {
         return this.userService.findAll()
     }
     @Put()
-    createUser(@Body() body: { name: string; username: string }): any {
-        const { name, username } = body;
-        return this.userService.create(name, username);
+    createUser(@Body() body: { id: string, name: string; username: string }): any {
+        const {id, name, username } = body;
+        return this.userService.create(id, name, username);
     }
 
 }

@@ -12,9 +12,9 @@ export class UserService {
     async findAll (): Promise<User[]> {
         return this.userRepo.findAll<User>()
     }
-    async create(name: string, username: string): Promise<User> {
+    async create(id: string, name: string, username: string): Promise<User> {
         const newUser = new User();
-        newUser.id = randomUUID();
+        newUser.id = id;
         newUser.name = name;
         newUser.username = username;
         return newUser.save();

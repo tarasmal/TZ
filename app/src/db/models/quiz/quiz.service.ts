@@ -25,7 +25,6 @@ export class QuizService {
         newQuiz.answer = answer;
         newQuiz.question = question;
         newQuiz.userId = userId;
-        console.log(newQuiz)
         return newQuiz.save();
     }
 }

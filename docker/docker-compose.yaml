@@ -27,13 +27,13 @@ services:
       DATABASE_NAME: "db"
     command: npm run start:dev
 
-  telegram-bot:
-    build: ../telegram-bot
+  bot:
+    build: ../bot
     restart: always
     depends_on:
       - server
     environment:
-      - SERVER_URL=http://server:3000
+      SERVER_URL: "http://server:3000"
 
 volumes:
   my-db:

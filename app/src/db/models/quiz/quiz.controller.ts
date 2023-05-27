@@ -10,10 +10,6 @@ export class QuizController {
     getQuizByUserId(@Query('userId') userId: string): any {
         return this.quizService.findByUserId(userId);
     }
-    @Get()
-    getQuizzes(): any {
-        return this.quizService.findAll();
-    }
     @Put()
     createQuiz(@Body() body: CreateQuizT): any {
         const {question, answer, userId} = body;
