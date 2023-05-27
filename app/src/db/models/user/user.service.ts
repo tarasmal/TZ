@@ -17,6 +17,12 @@ export class UserService {
         newUser.id = id;
         newUser.name = name;
         newUser.username = username;
-        return newUser.save();
+        try {
+            return newUser.save();
+        }
+        catch (e) {
+            console.log(e)
+            return e
+        }
     }
 }

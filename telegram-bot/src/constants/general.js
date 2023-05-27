@@ -1,2 +1,2 @@
-export const quizSceneId = 'quiz'
+export const quizSceneId = 'quiz';
 
