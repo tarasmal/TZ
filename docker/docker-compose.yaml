@@ -15,17 +15,29 @@ services:
     volumes:
       - my-db:/var/lib/mysql
       - ./init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uuser", "-ppassword"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   server:
     build: ../app
+    restart: always
     ports:
       - "3000:3000"
     environment:
-      DATABASE_HOST: "localhost"
+      DATABASE_HOST: "db"
       DATABASE_PORT: "3306"
       DATABASE_USERNAME: "user"
       DATABASE_PASSWORD: "password"
       DATABASE_NAME: "db"
     command: npm run start:dev
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:3306 || exit 1"]
+      interval: 5s
+      retries: 5
+      timeout: 10s
 
   bot:
     build: ../telegram-bot
@@ -34,6 +46,11 @@ services:
       - server
     environment:
       SERVER_URL: "http://server:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:3000/user"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   my-db:
