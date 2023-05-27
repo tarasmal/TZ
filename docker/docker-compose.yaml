@@ -28,7 +28,7 @@ services:
     command: npm run start:dev
 
   bot:
-    build: ../bot
+    build: ../telegram-bot
     restart: always
     depends_on:
       - server
